@@ -1,8 +1,8 @@
 <template>
     <ul>
         <Gif v-for="gif in gifs"
-        v-bind:key="gifs.gif"
-        v-bind:gif="gif"/>
+        v-bind:key="gif.gif"
+        v-bind:gif="gif"></Gif>
     </ul>
 </template>
 
@@ -14,6 +14,7 @@ export default {
     },
     
     components: {
+        // eslint-disable-next-line vue/no-unused-components
         Gifs
     }
 };
