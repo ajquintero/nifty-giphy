@@ -1,34 +1,21 @@
 <template>
     
     <header>
-        <h1>Pokedex Round 2!</h1>
+        <h1>Nifty Giphy!</h1>
         <label>
-            Attack:
-            <input type="number"
+            Search a Gif:
+            <input type="string"
                 v-model.number="filter.attack"
                 step="20"
             >
         </label>
 
-        <label>
-            Type:
-            <select v-model="filter.type">
-                <option value="">All</option>
-                <option
-                    v-for="type in types"
-                    v-bind:key="type"
-                    v-bind:value="type">
-                    {{type}}
-                </option>
-            </select>
-        </label>
 
         <label>
-            Sort By:
+            Filter By Rating:
             <select v-model="sort.field">
-                <option value="pokemon">Name</option>
-                <option value="type_1">Type</option>
-                <option value="attack">Attack</option>
+                <option value="pokemon">Highest to Lowest</option>
+    
             </select>
 
         </label>
