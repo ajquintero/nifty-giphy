@@ -2,7 +2,7 @@
   <div id="app">
     <Header 
       v-bind:sort="sort"
-      v-bind:types="pokemonTypes"
+      v-bind:types="gifTypes"
       v-bind:filter="filter"
     />
     <GiphySearch v-bind:gifs="sortedGifs" />
@@ -29,6 +29,7 @@ export default {
         };
     },
     components: {
+        // eslint-disable-next-line vue/no-unused-components
         Gifs,
         Header
     },
