@@ -35,15 +35,7 @@ export default {
     },
     
     computed: {
-        pokemonTypes() {
-            const types = [];
-            this.pokemons.forEach(pokemon => {
-                if(!types.includes(pokemon.type_1)) {
-                    types.push(pokemon.type_1);
-                }
-            });
-            return types;
-        },
+
         
         filteredGifs() {
             return this.gifs.filter(gif => {

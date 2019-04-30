@@ -1,12 +1,10 @@
 <template>
     <li>
-        <img v-bind:src="pokemon.url_image" />
-        <div v-bind:style="{ color:pokemon.color_1}" class="info">
-            <h3>{{ pokemon.pokemon }}</h3>
-            <p>type 1: {{ pokemon.type_1 }}</p>
-            <p>type 2: {{ pokemon.type_2 }}</p>
-            <p>attack: {{ pokemon.attack }}</p>
-            <p>defense: {{ pokemon.defense }}</p>
+        <img v-bind:src="gif.url_image" />
+        <div v-bind:style="{ color:gif.color_1}" class="info">
+            <h3>{{ gif.url_image }}</h3>
+            <p>search term: {{ gif.attack }}</p>
+            <p>rating: {{ gif.rating }}</p>
         </div>
     </li>
 </template>
@@ -14,7 +12,7 @@
 <script>
 export default {
     props: {
-        pokemon: Object
+        gif: Object
     }
 };
 </script>

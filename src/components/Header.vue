@@ -14,7 +14,7 @@
         <label>
             Filter By Rating:
             <select v-model="sort.field">
-                <option value="pokemon">Highest to Lowest</option>
+                <option value="gif">Highest to Lowest</option>
     
             </select>
 
