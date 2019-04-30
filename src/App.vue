@@ -16,7 +16,7 @@ import Header from './components/Header';
 export default {
     data() {
         return {
-            gifs: GiphyAPI.getPokemons(), 
+            gifs: GiphyAPI.getGifs(), 
             filter: {
                 type: '',
                 attack: 0,
@@ -44,16 +44,15 @@ export default {
             return types;
         },
         
-        filteredPokemons() {
-            return this.pokemons.filter(pokemon => {
-                const hasType = !this.filter.type || pokemon.type_1 === this.filter.type;
-                const hasAttack = !this.filter.attack || pokemon.attack >= this.filter.attack;
-                return hasType && hasAttack;
+        filteredGifs() {
+            return this.gifs.filter(gif => {
+                const hasRating = !this.filter.rating || gif.rating === this.filter.rating;
+                return hasRating;
             });
         },
-        sortedPokemons() {
+        sortedGifs() {
             const field = this.sort.field;
-            return this.filteredPokemons.slice().sort((a, b) => {
+            return this.filteredGifs.slice().sort((a, b) => {
                 if(a[field] > b[field]) {
                     return 1;
                 }

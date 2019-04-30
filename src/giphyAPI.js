@@ -1,4 +1,4 @@
-import gifs from './src/giphy.js/index.js.js';
+import gifs from './components/Gifs.vue';
 
 
 export default {
