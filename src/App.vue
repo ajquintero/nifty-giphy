@@ -5,18 +5,18 @@
       v-bind:types="pokemonTypes"
       v-bind:filter="filter"
     />
-    <Pokedex v-bind:pokemons="sortedPokemons" />
+    <GiphySearch v-bind:gifs="sortedGifs" />
   </div>
 </template>
 
 <script>
-import pokemonApi from './pokemonsApi.js';
-import Pokedex from './components/Pokedex';
+import GiphyAPI from './giphyAPI.js';
+import Gifs from './components/Gifs';
 import Header from './components/Header';
 export default {
     data() {
         return {
-            pokemons: pokemonApi.getPokemons(), 
+            gifs: GiphyAPI.getPokemons(), 
             filter: {
                 type: '',
                 attack: 0,
@@ -29,7 +29,7 @@ export default {
         };
     },
     components: {
-        Pokedex,
+        Gifs,
         Header
     },
     
