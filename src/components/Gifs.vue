@@ -1,11 +1,6 @@
 <template>
     <li>
         <img v-bind:src="gif.url_image" />
-        <div v-bind:style="{ color:gif.color_1}" class="info">
-            <h3>{{ gif.url_image }}</h3>
-            <p>search term: {{ gif.attack }}</p>
-            <p>rating: {{ gif.rating }}</p>
-        </div>
     </li>
 </template>
 
