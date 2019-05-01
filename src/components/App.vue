@@ -5,7 +5,11 @@
       v-bind:types="gifTypes"
       v-bind:filter="filter"
     />
-    <GiphySearch v-bind:gifs="sortedGifs" />
+    <input v-model="gifSearch" type="text">
+    <button class="button" @click=findGifs()>Search</button>
+    <div class="gif-container">
+      <img v-for="gif in gifs" :src="gif" :key="gif.id">
+    </div>
   </div>
 </template>
 
@@ -16,17 +20,27 @@ import Header from './components/Header';
 export default {
     data() {
         return {
-            gifs: GiphyAPI.getGifs(), 
-            filter: {
-                type: '',
-                attack: 0,
-                defense: 0
-            },
-            sort: {
-                field: 'name',
-                
-            }
+            gifTerm: '', 
+            gifs: []
         };
+    },
+    methods: {
+        findGifs() {
+
+            fetch(url)
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    this.renderGifs(json);
+                })
+                .catch(err => console.log(err));
+        },
+        renderGifs(json) {
+            this.gifs = json.data.map(gif => gif.id).map(gifId => {
+                return `https://media.giphy.com/media/${gifId}/giphy.gif`;
+            });
+        }
     },
     components: {
         // eslint-disable-next-line vue/no-unused-components
