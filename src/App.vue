@@ -6,7 +6,7 @@
       v-bind:filter="filter"
     />
     <input v-model="gifSearch" type="text">
-    <button class="button" @click=findGifs()>Search</button>
+    <button class="button" v-on:click=findGifs()>Search</button>
     <div class="gif-container">
       <img v-for="gif in gifs" :src="gif" :key="gif.id">
     </div>
@@ -14,9 +14,6 @@
 </template>
 
 <script>
-import GiphyAPI from './giphyAPI.js';
-import Gifs from './components/Gifs';
-import Header from './components/Header';
 export default {
     data() {
         return {
@@ -25,8 +22,14 @@ export default {
         };
     },
     methods: {
+    
         findGifs() {
-
+            let apiKey = 'RyRi8wCZBqDhCjXXwE5bklzJjfJ1nV0Y';
+            let searchEndPoint = 'https://api.giphy.com/v1/gifs/search?';
+            let limit = 5;
+            let url = `${searchEndPoint}&api_key=${apiKey}&q=${
+                this.searchTerm
+            }&limit=${limit}`;
             fetch(url)
                 .then(response => {
                     return response.json();
@@ -41,35 +44,7 @@ export default {
                 return `https://media.giphy.com/media/${gifId}/giphy.gif`;
             });
         }
-    },
-    components: {
-        // eslint-disable-next-line vue/no-unused-components
-        Gifs,
-        Header
-    },
-    
-    computed: {
-
-        
-        filteredGifs() {
-            return this.gifs.filter(gif => {
-                const hasRating = !this.filter.rating || gif.rating === this.filter.rating;
-                return hasRating;
-            });
-        },
-        sortedGifs() {
-            const field = this.sort.field;
-            return this.filteredGifs.slice().sort((a, b) => {
-                if(a[field] > b[field]) {
-                    return 1;
-                }
-                if(a[field] < b[field]) {
-                    return -1;
-                }
-                return 0;
-            });    
-        }
-    }
+    }    
 };
 </script>
 
@@ -81,5 +56,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background: #12c2e9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  
+background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); 
+
 }
 </style>
